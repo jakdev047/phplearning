@@ -1,5 +1,7 @@
 <?php
 
+include('./modules/class.php');
+
 /* 
     Print Syntax
 
@@ -7,5 +9,9 @@
 
 */
 
-echo("Welcome PHP!");
+echo "Welcome PHP!". "<br/>";
+
+// calculator
+$calObj = new Calculator(5,5); //instance
+echo $calObj->add();
 
