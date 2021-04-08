@@ -11,19 +11,24 @@
         <?php 
             echo "<pre>";
             print_r($_POST);
+            
+            $result = 0;
+            if(!empty($_POST['number1']) && !empty($_POST['number2']) && !empty($_POST['operator']) ) {
 
-            $num1= $_POST['number1'];
-            $num2 = $_POST['number2'];
-            $operator = $_POST['operator'];
+                $num1= $_POST['number1'];
+                $num2 = $_POST['number2'];
+                $operator = $_POST['operator'];
 
-            if ($operator == '+') {
-                $result = $num1 + $num2;
-            }
-            elseif ($operator == '-') {
-                $result = $num1 - $num2;
-            }
-            else {
-                $result = 0;
+                if ($operator == '+') {
+                    $result = $num1 + $num2;
+                }
+                elseif ($operator == '-') {
+                    $result = $num1 - $num2;
+                }
+                else {
+                    $result = 0;
+                }
+
             }
             
             echo "</pre>";
