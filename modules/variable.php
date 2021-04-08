@@ -26,3 +26,7 @@ define('PI',3.1416);
 
 echo("Name: ".$name."<br/>");
 echo constant("PI");
+
+// $_SESSION
+session_start();
+print_r($_SESSION);
