@@ -11,7 +11,7 @@
     $_FILES
     $_ENV
     $_COOKIE
-    $_SESSION -> To store information (in variables) to be used across multiple pages.
+    $_SESSION -> To store information (in variables) to be used across multiple pages. It is used backend side
 
 */
 
