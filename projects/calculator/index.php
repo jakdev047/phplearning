@@ -4,6 +4,7 @@
     
     $calObj = new Calculator();
     $result = 0;
+    
     if(isset($_POST['operator'])) {
         $calObj->setData($_POST);
         $result = $calObj->calculate();

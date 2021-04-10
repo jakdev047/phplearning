@@ -19,39 +19,47 @@ class Calculator {
         $this->b = $b;
     }
 
+    public function setData($postData) {
+
+        if(isset($postData['number1'])) {
+            $this->a = $postData['number1'];
+        }
+
+        if(isset($postData['number2'])) {
+            $this->b = $postData['number2'];
+        }
+
+        if(isset($postData['operator'])) {
+            $this->operator = $postData['operator'];
+        }
+    }
+
     public function add(){
         $result = $this->a + $this->b;
         return $result;
     }
 
-    public function sum($a=0,$b=0){
-        $result = $a + $b;
-        return $result;
+    public function sum(){
+        return $this->a + $this->b;
     }
 
-    public function substract($a=0,$b=0){
-        $result = $a - $b;
-        return $result;
-    }
-
-    public function setData($postData) {
-        if(!empty($postData['number1']) && !empty($postData['number2'])  && !empty($postData['operator']) ) {
-            $this->a = $postData['number1'];
-            $this->b = $postData['number2'];
-            $this->operator = $postData['operator'];
-        }
+    public function substract(){
+        return $this->a - $this->b;
     }
 
     public function calculate(){
-        if ($this->operator  == '+') {
-            $result = $this->sum($this->a,$this->b);
+        switch($this->operator) {
+            case $this->operator == '+':
+                $result = $this->sum($this->a,$this->b);
+                break;
+            case $this->operator == '-':
+                    $result = $this->substract($this->a,$this->b);
+                    break;
+            default:
+                $result = 0;
+                break;
         }
-        elseif ($this->operator  == '-') {
-            $result = $this->substract($this->a,$this->b);
-        }
-        else {
-            $result = 0;
-        }
+
         return $result;
     }
 
