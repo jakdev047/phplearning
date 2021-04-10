@@ -1,3 +1,18 @@
+<?php 
+    include('../../modules/class.php');
+    echo "<pre>";
+    
+    $calObj = new Calculator();
+    $result = 0;
+    if(isset($_POST['operator'])) {
+        $calObj->setData($_POST);
+        $result = $calObj->calculate();
+
+    }
+    
+    echo "</pre>";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,46 +23,21 @@
     </head>
 
     <body>
-        <?php 
-            echo "<pre>";
-            print_r($_POST);
-            
-            $result = 0;
-            if(!empty($_POST['number1']) && !empty($_POST['number2']) && !empty($_POST['operator']) ) {
-
-                $num1= $_POST['number1'];
-                $num2 = $_POST['number2'];
-                $operator = $_POST['operator'];
-
-                if ($operator == '+') {
-                    $result = $num1 + $num2;
-                }
-                elseif ($operator == '-') {
-                    $result = $num1 - $num2;
-                }
-                else {
-                    $result = 0;
-                }
-
-            }
-            
-            echo "</pre>";
-        ?>
         <div class="container">
             <form action="" method="POST">
                 <h2> Result: <?php echo $result ?> </h2>
                 <div>
                     <label>Number One:</label>
-                    <input type="number" name="number1" />
+                    <input type="number" name="number1" value="<?php $_POST['number1'] ?>" />
                 </div>
                 <div>
                     <label>Number Two:</label>
-                    <input type="number" name="number2" />
+                    <input type="number" name="number2" value="<?php $_POST['number2']?>" />
                 </div>
                 <div>
                     <select name="operator">
-                        <option value="+">+</option>
-                        <option value="-">-</option>
+                        <option <?php $_POST['operator'] == '+' ? 'selected' : '' ?> value="+">+</option>
+                        <option <?php $_POST['operator'] == '-' ? 'selected' : '' ?> value="-">-</option>
                     </select>
                 </div>
                 <div>
