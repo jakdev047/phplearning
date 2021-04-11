@@ -1,0 +1,68 @@
+1. SQL Fundamental 1
+============================
+	a. Create Database => CREATE DATABASE pnp;
+	b. Delete Database => DROP DATABASE pnp;
+	c. Craete Table => CREATE TABLE accounts(
+    				id INT NOT NULL AUTO_INCREMENT,
+    				name VARCHAR(50),
+    				website VARCHAR(50),
+    				lat FLOAT,
+    				lon FLOAT,
+   				primary_poc VARCHAR(50),
+    				sales_rep_id INT(11),
+    				PRIMARY KEY(id)
+				);
+	d. Table Insert => INSERT INTO accounts(name,website,lat,lon,primary_poc,sales_rep_id) VALUES ('Jhon','john.com','123','456','Doe','1001');
+	e. All Data Get => SELECT * FROM accounts;
+	f. Specific Column Get From Table => SELECT id, name, primary_poc FROM accounts;
+	g. Specifq Column Delete From Table => ALTER TABLE accounts DROP website;
+	h. Delete Table From Database => DROP TABLE website;
+	i. Update Row Column Data => UPDATE accounts SET name = "Mr. Jhone" WHERE id =  1;
+	j. Delete Row Data => DELETE FROM accounts WHERE id = 1;
+
+2. SQL Fundamental 2
+============================
+	a. Distinct: Return particuler column get => SELECT DISTINCT sales_rep_id FROM accounts;
+	b. Limit: Return the output to first 10 rows => SELECT account_id, occurred_at, channel   FROM web_events    LIMIT 10;
+	c. Order By: 
+		i. Order By must be after from and before limit
+		ii. It is set to Ascending Order by default
+		iii. SELECT account_id, occurred_at, channel   FROM web_events  ORDER BY occurred_at    LIMIT 10;
+	d. Where: 
+		i.   SELECT * FROM orders WHERE total_amt_usd > 2000;
+		ii.  SELECT * FROM orders WHERE poster_amt_usd >= 500 ORDER BY poster_amt_usd DESC LIMIT 25;
+		iii. SELECT name, website, primary_poc FROM accounts WHERE name = 'General Motors';
+		iv.  SELECT name, website, primary_poc FROM accounts WHERE name IN ('Chevron', 'HP', 'Amazon.com', 'Verizon');
+	e. Derived Column: New column calculated by manipulation of existing column
+		i. SELECT account_id, occured_at, standard_amt_usd/(standard_qty + 0.01) AS std_unit_price FROM orders Limit 5
+	f. Like: to get a set of result based on specifiq text patten
+		i.   to start a => SELECT name FROM accounts WHERE name LIKE 'a%'
+		ii.  to end a => SELECT name FROM accounts WHERE name LIKE '%a'
+		iii. any position a => SELECT name FROM accounts WHERE name LIKE '%a%'
+		iv.  filter => SELECT website FROM accounts WHERE website NOT Like '%.com'
+	g. And/Or: 
+		i.  two condition match => SELECT id, account_id, occured_at FROM orders WHERE poster_qty = 0 AND total > 1000
+		ii. one condition match => SELECT id, account_id, occured_at FROM orders WHERE poster_qty = 0 Or total > 1000
+	h. Between: 
+		i.SELECT * FROM orders WHERE total between 2500 and 5000
+
+
+3. Relational Database and SQL Join
+========================================
+
+	a. Inner Join:
+		i.  SELECT column_name(s) FROM table1 JOIN table2 ON table1.column_name(foreign_key) = table2.column_name(primary_key);
+		ii. SELECT o.id, o.occured_at, o.total, o.total_amt_usd, a.primary_poc FROM orders o JOIN accounts a ON o.account_id = a.id WHERE a.name = 		    'General Motors'
+		iii. what is want?  => 
+			SELECT r.name region, a.name account, o.total_amt_usd/(o.total + 0.01) unit_price FROM region r JOIN sales_reps s ON s.region_id = 				r.id JOIN accounts a ON a.sales_rep_id = s.id JOIN orders o ON o.account_id = a.id WHERE o.standard_qty > 500 AND (o.poster_qty > 				1000 OR o.gloss_qty > 1000) ORDER BY unit_price DESC
+
+
+
+
+
+
+
+
+
+
+
