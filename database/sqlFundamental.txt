@@ -8,7 +8,7 @@
     				website VARCHAR(50),
     				lat FLOAT,
     				lon FLOAT,
-   				primary_poc VARCHAR(50),
+   					primary_poc VARCHAR(50),
     				sales_rep_id INT(11),
     				PRIMARY KEY(id)
 				);

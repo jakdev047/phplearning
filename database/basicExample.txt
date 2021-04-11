@@ -1,0 +1,32 @@
+Example 1: 
+===========
+Id  Name         Price
+1   ProductOne   10.50
+2   ProductTwo   11.50
+3   ProductThree 12.50
+
+
+#Create Database 
+    CREATE DATABASE ecom;
+
+#Craete Table
+    CREATE TABLE products(
+        id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY
+        name VARCHAR(50),
+        price FLOAT(8,2)
+	);
+
+#Save Data
+    INSERT INTO products(name,price)  VALUES ('ProductOne',10.50);
+
+#Read Data
+    SELECT * FROM products;
+    SELECT * FROM products WHERE id = 2;
+    SELECT id,name FROM products WHERE id = 2;
+    SELECT id,name FROM products WHERE name = 'ProductTwo';
+
+#Update Data
+    UPDATE products SET name = "Product2" WHERE id =  2;
+
+#Delete Data
+    DELETE FROM accounts WHERE id = 2;
