@@ -29,4 +29,4 @@ Id  Name         Price
     UPDATE products SET name = "Product2" WHERE id =  2;
 
 #Delete Data
-    DELETE FROM accounts WHERE id = 2;
+    DELETE FROM products WHERE id = 2;
