@@ -1,11 +1,9 @@
 <?php
 
-// include('./vendor/autoload.php');
-include('./Textile/Fabric/Department.php');
-include('./Textile/Yearn/Department.php');
+include('vendor/autoload.php');
 
-use Textile\Fabric\Department as FabricDepartment;
-use Textile\Yearn\Department as YearnDepartment;
+use TextileApp\Fabric\Department as FabricDepartment;
+use TextileApp\Yearn\Department as YearnDepartment;
 
 echo "Welcome Namespace!", "<br/>";
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Textile\Yearn;
+namespace TextileApp\Yearn;
 
 class Department {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Textile\Fabric;
+namespace TextileApp\Fabric;
 
 class Department {
 
