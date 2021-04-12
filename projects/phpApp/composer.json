@@ -1,0 +1,14 @@
+{
+    "name": "projects/phpapp",
+    "description": "test description",
+    "authors": [
+        {
+            "name": "jakdev047",
+            "email": "jakfreelancer047@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {}
+    },
+    "require": {}
+}

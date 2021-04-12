@@ -1,0 +1,16 @@
+{
+    "name": "projects/namespace",
+    "description": "Namespace",
+    "authors": [
+        {
+            "name": "jakdev047",
+            "email": "jakfreelancer047@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "Textile/"
+        }
+    },
+    "require": {}
+}
