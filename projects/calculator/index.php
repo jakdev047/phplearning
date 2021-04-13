@@ -2,8 +2,25 @@
     include('../../modules/class.php');
     echo "<pre>";
     
+    //  initialize data
     $calObj = new Calculator();
     $result = 0;
+    $num1=0;
+    $num2=0;
+    $operator = "+";
+
+    // intialize data check
+    if(isset($_POST['number1'])) {
+        $num1 = $_POST['number1'];
+    }
+
+    if(isset($_POST['number2'])) {
+        $num2 = $_POST['number2'];
+    }
+
+    if(isset($_POST['operator'])) {
+        $operator = $_POST['operator'];
+    }
     
     if(isset($_POST['operator'])) {
         $calObj->setData($_POST);
@@ -29,16 +46,16 @@
                 <h2> Result: <?php echo $result ?> </h2>
                 <div>
                     <label>Number One:</label>
-                    <input type="number" name="number1" value="<?php $_POST['number1'] ?>" />
+                    <input type="number" name="number1" value="<?php $num1 ?>" />
                 </div>
                 <div>
                     <label>Number Two:</label>
-                    <input type="number" name="number2" value="<?php $_POST['number2']?>" />
+                    <input type="number" name="number2" value="<?php $num2 ?>" />
                 </div>
                 <div>
                     <select name="operator">
-                        <option <?php $_POST['operator'] == '+' ? 'selected' : '' ?> value="+">+</option>
-                        <option <?php $_POST['operator'] == '-' ? 'selected' : '' ?> value="-">-</option>
+                        <option <?php $operator  == '+' ? 'selected' : '' ?> value="+">+</option>
+                        <option <?php $operator  == '-' ? 'selected' : '' ?> value="-">-</option>
                     </select>
                 </div>
                 <div>
