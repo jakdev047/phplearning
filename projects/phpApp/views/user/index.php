@@ -34,7 +34,7 @@
                             <div class="card-body">
                                 <a href="/phplearning/projects/phpApp/views/user/product.php?slug=<?php echo $product['slug'] ?>">
                                     <h5 class="card-title text-info">
-                                        <?php echo $product['name'] ?>
+                                        <?php echo htmlspecialchars($product['name']) ?>
                                     </h5>
                                 </a>
                                 <p class="card-text"><?php echo $product['price'] ?> BDT</p>
