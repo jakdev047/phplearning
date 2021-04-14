@@ -32,7 +32,7 @@
                                 alt="image"
                             >
                             <div class="card-body">
-                                <a href="/phplearning/projects/phpApp/views/user/product.php?<?php echo $product['slug'] ?>">
+                                <a href="/phplearning/projects/phpApp/views/user/product.php?slug=<?php echo $product['slug'] ?>">
                                     <h5 class="card-title text-info">
                                         <?php echo $product['name'] ?>
                                     </h5>

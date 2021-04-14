@@ -41,4 +41,13 @@ class ProductController {
         $productModelObject = new Database;
         return $productModelObject->selectData($selectQuery);
     }
+
+    public function getProductBySlug($slug) {
+        // query by slug
+        $selectQuery = "SELECT * FROM products WHERE slug='".$slug."'";
+
+        // data get from Database
+        $productModelObject = new Database;
+        return $productModelObject->selectData($selectQuery);
+    }
 }

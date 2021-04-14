@@ -1,5 +1,13 @@
 <?php
+    include('../../vendor/autoload.php');
 
+    use App\controllers\ProductController;
+
+    $productsObj = new ProductController;
+
+    // collect slug from url
+    $singleProductobj = $productsObj->getProductBySlug($_GET['slug']);
+    $singleProduct = $singleProductobj[0];
 
 ?>
 
@@ -28,18 +36,21 @@
                             >
                         </div>
                         <div class="media-body">
-                            <h5 class="card-title">Product Title</h5>
-                            <p class="card-text">Product Price</p>
+                            <h5 class="card-title"><?php echo $singleProduct['name']?></h5>
+                            <p class="card-text">
+                                Price: <?php echo $singleProduct['price']?> BDT
+                            </p>
+                            <p class="card-text">
+                                Quantity: <?php echo $singleProduct['quantity']?>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12 mt-3">
-                    <h2>Product Title</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium corrupti excepturi totam nostrum, obcaecati dolorem natus voluptates hic perspiciatis dolore tempore consectetur, eum illum maiores beatae, omnis voluptatibus. Quos, amet.
-                    </p>
+                    <h2><?php echo $singleProduct['name']?></h2>
+                    <p><?php echo $singleProduct['description']?></p>
                 </div>
             </div>
         </div>
