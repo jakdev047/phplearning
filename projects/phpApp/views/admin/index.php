@@ -1,6 +1,9 @@
 <?php
+    include('../../vendor/autoload.php');
 
+    use App\controllers\ProductController;
 
+    $productObject = new ProductController;
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +28,65 @@
                     <hr>
                     <div class="card card-secondary">
                         <div class="card-body">
-                            Form
+                            <?php
+                                if(!empty($_POST)) {
+                                    $productObject->addproduct($_POST);
+                                }
+                            ?>
+                            <form action="" method="POST">
+                                <div class="form-group">
+                                    <label> Name</label>
+                                    <input 
+                                    class="form-control" 
+                                    type="text" 
+                                    name="name"
+                                    required
+                                    >
+                                </div>
+                                <div class="form-group">
+                                    <label> Price</label>
+                                    <input 
+                                    class="form-control" 
+                                    type="number" 
+                                    name="price"
+                                    required
+                                    >
+                                </div>
+                                <div class="form-group">
+                                    <label> Quantity</label>
+                                    <input 
+                                    class="form-control" 
+                                    type="number" 
+                                    name="quantity"
+                                    required
+                                    >
+                                </div>
+                                <div class="form-group">
+                                    <label> Description</label>
+                                    <textarea
+                                        class="form-control" 
+                                         name="description" 
+                                         rows="5"
+                                         required
+                                    ></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Image</label>
+                                    <input 
+                                    class="form-control" 
+                                    type="file" 
+                                    name="image"
+                                    
+                                    >
+                                </div>
+                                <div class="form-group">
+                                    <input 
+                                    class="btn btn-primary" 
+                                    type="submit" 
+                                    value="submit"
+                                    >
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
