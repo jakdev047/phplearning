@@ -1,6 +1,11 @@
 <?php
+    include('../../vendor/autoload.php');
 
+    use App\controllers\ProductController;
 
+    $productsObj = new ProductController;
+
+    $products = $productsObj->getAllProducts();
 ?>
 
 <!DOCTYPE html>
@@ -18,21 +23,25 @@
         <div class="container">
             <h3>Product List</h3>
             <div class="row">
-                <div class="col-md-3">
-                    <div class="card">
-                        <img 
-                            src="https://via.placeholder.com/1000" 
-                            class="card-img-top" 
-                            alt="image"
-                        >
-                        <div class="card-body">
-                            <a href="/phplearning/projects/phpApp/views/user/product.php">
-                                <h5 class="card-title text-info">Product Title</h5>
-                            </a>
-                            <p class="card-text">Product Price</p>
+                <?php foreach($products as $product) { ?>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img 
+                                src="https://via.placeholder.com/1000" 
+                                class="card-img-top" 
+                                alt="image"
+                            >
+                            <div class="card-body">
+                                <a href="/phplearning/projects/phpApp/views/user/product.php?<?php echo $product['slug'] ?>">
+                                    <h5 class="card-title text-info">
+                                        <?php echo $product['name'] ?>
+                                    </h5>
+                                </a>
+                                <p class="card-text"><?php echo $product['price'] ?> BDT</p>
+                            </div>
                         </div>
-                    </div>
                 </div>
+                <?php } ?>
             </div>
         </div>
     </body>

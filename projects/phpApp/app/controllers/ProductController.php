@@ -32,4 +32,13 @@ class ProductController {
             echo "Data Not Saved";
         }
     }
+
+    public function getAllProducts() {
+        // all selected products query
+        $selectQuery = "SELECT * FROM products";
+
+        // data get from Database
+        $productModelObject = new Database;
+        return $productModelObject->selectData($selectQuery);
+    }
 }
