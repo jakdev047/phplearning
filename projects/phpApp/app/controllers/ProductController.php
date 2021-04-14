@@ -50,4 +50,13 @@ class ProductController {
         $productModelObject = new Database;
         return $productModelObject->selectData($selectQuery);
     }
+
+    public function getProductById($id) {
+        // query by id
+        $selectQuery = "SELECT * FROM products WHERE id=$id ";
+
+        // data get from Database
+        $productModelObject = new Database;
+        return $productModelObject->selectData($selectQuery);
+    }
 }

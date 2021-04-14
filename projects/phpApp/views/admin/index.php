@@ -57,7 +57,12 @@
                                             <td><?php echo $product['price']?></td>
                                             <td><?php echo $product['quantity']?></td>
                                             <td>
-                                                <a class="btn btn-info mr-2">Edit</a>
+                                                <a 
+                                                    class="btn btn-info mr-2"
+                                                    href="/phplearning/projects/phpApp/views/admin/edit.php?id=<?php  echo $product['id'] ?>"
+                                                >
+                                                    Edit
+                                                </a>
                                                 <a class="btn btn-danger">Delete</a>
                                             </td>
                                         </tr>
