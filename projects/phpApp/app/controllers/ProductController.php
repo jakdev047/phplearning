@@ -10,16 +10,18 @@ class ProductController {
     public function addproduct($postData) {
         // data collection from form
         $name = $postData['name'];
+        $slug = str_replace(' ','-',$postData['name']);
         $price = $postData['price'];
         $quantity = $postData['quantity'];
         $description = $postData['description'];
 
         // string converted
         $nameStr = "'".$name."'";
+        $slugStr = "'".$slug."'";
         $descriptionStr = "'".$description."'";
 
         // insetQuery
-        $insetQuery = "INSERT INTO products(name,slug,price,quantity,description) VALUES ($nameStr,$nameStr,$price,$quantity,$descriptionStr)";
+        $insetQuery = "INSERT INTO products(name,slug,price,quantity,description) VALUES ($nameStr,$slugStr,$price,$quantity,$descriptionStr)";
 
         // data save database
         $productModelObject = new Database;
