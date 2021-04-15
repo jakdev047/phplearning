@@ -41,10 +41,15 @@
                         <div class="card-body">
                             <?php
                                 if(!empty($_POST)) {
-                                    $productObject->addproduct($_POST);
+                                    $productObject->updateProduct($_POST);
                                 }
                             ?>
                             <form action="" method="POST">
+                                <input 
+                                    type="hidden" 
+                                    name="product_id"
+                                    value="<?php echo $singleProduct['id'] ?>"
+                                >
                                 <div class="form-group">
                                     <label> Name</label>
                                     <input 

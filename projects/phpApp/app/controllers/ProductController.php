@@ -59,4 +59,31 @@ class ProductController {
         $productModelObject = new Database;
         return $productModelObject->selectData($selectQuery);
     }
+
+    public function updateProduct($postData) {
+        // data collection from name attribute in form 
+        $name = $postData['name'];
+        $price = $postData['price'];
+        $quantity = $postData['quantity'];
+        $description = $postData['description'];
+        $product_id = $postData['product_id'];
+
+        // string converted
+        $nameStr = "'".$name."'";
+        $descriptionStr = "'".$description."'";
+
+        // updateQuery
+        $updateQuery = "UPDATE products SET name = $nameStr, price = $price, quantity = $quantity, description = $descriptionStr WHERE id =  $product_id ";
+
+        // data save database
+        $productModelObject = new Database;
+        $result = $productModelObject->updateData($updateQuery);
+
+        if($result) {
+            echo "Data Successfully Updated";
+        }
+        else {
+            echo "Data Not Updated";
+        }
+    }
 }
