@@ -63,7 +63,10 @@
                                                 >
                                                     Edit
                                                 </a>
-                                                <a class="btn btn-danger">Delete</a>
+                                                <a 
+                                                    href="/phplearning/projects/phpApp/views/admin/delete.php?id=<?php  echo $product['id'] ?>"
+                                                    class="btn btn-danger"
+                                                >Delete</a>
                                             </td>
                                         </tr>
                                     <?php } ?>

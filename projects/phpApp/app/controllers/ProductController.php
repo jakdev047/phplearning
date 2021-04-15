@@ -88,4 +88,20 @@ class ProductController {
             echo "Data Not Updated";
         }
     }
+
+    public function deleteProductById($id) {
+        // query by id
+        $deleteQuery = "DELETE FROM products WHERE id = $id ";
+
+        // data get from Database
+        $productModelObject = new Database;
+        $result =  $productModelObject->deleteData($deleteQuery);
+
+        if($result) {
+            header('Location:index.php');
+        }
+        else {
+            echo "Product Not Deleted.";
+        }
+    }
 }
