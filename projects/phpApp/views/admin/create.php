@@ -41,7 +41,7 @@
                                     $productObject->addproduct($_POST);
                                 }
                             ?>
-                            <form action="" method="POST">
+                            <form action="" method="POST" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label> Name</label>
                                     <input 
@@ -84,7 +84,7 @@
                                     class="form-control" 
                                     type="file" 
                                     name="image"
-                                    
+                                    required
                                     >
                                 </div>
                                 <div class="form-group">

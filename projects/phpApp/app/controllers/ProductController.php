@@ -9,19 +9,26 @@ class ProductController {
     // method
     public function addproduct($postData) {
         // data collection from form
+        $imageName = date('Y').'_'.$_FILES['image']['name']; // image name from files
+        $tempPath = $_FILES['image']['tmp_name']; // temporary image path
+        $imagePath = "uploads/images/{$imageName}"; // local path of image with image Name
+        move_uploaded_file($tempPath,__DIR__."/../../{$imagePath}"); // move to temporary to image original path
+        
         $name = $postData['name'];
         $slug = str_replace(' ','-',$postData['name']);
         $price = $postData['price'];
         $quantity = $postData['quantity'];
         $description = $postData['description'];
+        $image = $imagePath;  // image path to save database
 
         // string converted
         $nameStr = "'".$name."'";
         $slugStr = "'".$slug."'";
         $descriptionStr = "'".$description."'";
+        $imageStr = "'".$image."'";
 
         // insetQuery
-        $insetQuery = "INSERT INTO products(name,slug,price,quantity,description) VALUES ($nameStr,$slugStr,$price,$quantity,$descriptionStr)";
+        $insetQuery = "INSERT INTO products(name,slug,price,quantity,description,image) VALUES ($nameStr,$slugStr,$price,$quantity,$descriptionStr,$imageStr)";
 
         // data save database
         $productModelObject = new Database;

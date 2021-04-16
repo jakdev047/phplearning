@@ -24,10 +24,10 @@
             <h3>Product List</h3>
             <div class="row">
                 <?php foreach($products as $product) { ?>
-                    <div class="col-md-3">
+                    <div class="col-md-3 my-2">
                         <div class="card">
                             <img 
-                                src="https://via.placeholder.com/1000" 
+                                src="<?php echo '../../'.$product['image'] ?>" 
                                 class="card-img-top" 
                                 alt="image"
                             >
