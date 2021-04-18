@@ -123,6 +123,10 @@ class ProductController {
         // query by id
         $deleteQuery = "DELETE FROM products WHERE id = $id ";
 
+        // delete image delete
+        $dbSingleProduct  = $this->getProductById($id );
+        unlink(__DIR__."/../../{$dbSingleProduct[0]['image']}");
+
         // data get from Database
         $productModelObject = new Database;
         $result =  $productModelObject->deleteData($deleteQuery);
