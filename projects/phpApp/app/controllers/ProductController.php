@@ -70,20 +70,43 @@ class ProductController {
     }
 
     public function updateProduct($postData) {
-        // data collection from name attribute in form 
+        // data collection from name attribute in form
         $name = $postData['name'];
         $price = $postData['price'];
         $quantity = $postData['quantity'];
         $description = $postData['description'];
         $product_id = $postData['product_id'];
+         
+        // for image update
+        $imagePath = null;
+
+        if($_FILES['image']['name']) {
+            $imageName = date('Y').'_'.$_FILES['image']['name']; // image name from files
+            $tempPath = $_FILES['image']['tmp_name']; // temporary image path
+            $imagePath = "uploads/images/{$imageName}"; // local path of image with image Name
+            
+            // prvious image delete
+            $dbSingleProduct  = $this->getProductById($product_id ); // collect from database
+            unlink(__DIR__."/../../{$dbSingleProduct[0]['image']}");
+
+            // new image upload
+            move_uploaded_file($tempPath,__DIR__."/../../{$imagePath}"); // move to temporary to image original path
+        }
 
         // string converted
         $nameStr = "'".$name."'";
         $descriptionStr = "'".$description."'";
+        $imageStr = "'".$imagePath."'";
 
-        // updateQuery
-        $updateQuery = "UPDATE products SET name = $nameStr, price = $price, quantity = $quantity, description = $descriptionStr WHERE id =  $product_id ";
-
+        if($imagePath != null) {
+            // updateQuery
+            $updateQuery = "UPDATE products SET name = $nameStr, price = $price, quantity = $quantity, description = $descriptionStr, image = $imageStr WHERE id =  $product_id ";
+        }
+        else {
+            // updateQuery
+            $updateQuery = "UPDATE products SET name = $nameStr, price = $price, quantity = $quantity, description = $descriptionStr WHERE id =  $product_id ";
+        }
+        
         // data save database
         $productModelObject = new Database;
         $result = $productModelObject->updateData($updateQuery);

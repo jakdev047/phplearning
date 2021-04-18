@@ -44,7 +44,7 @@
                                     $productObject->updateProduct($_POST);
                                 }
                             ?>
-                            <form action="" method="POST">
+                            <form action="" method="POST" enctype="multipart/form-data">
                                 <input 
                                     type="hidden" 
                                     name="product_id"
@@ -96,7 +96,12 @@
                                     type="file" 
                                     name="image"
                                     value="<?php echo $singleProduct['image'] ?>"
-                                    >
+                                    > <br/>
+                                    <img 
+                                        style="width: 250px"
+                                        src="../../<?php echo $singleProduct['image'] ?>"
+                                        alt="image"
+                                    />
                                 </div>
                                 <div class="form-group">
                                     <input 
